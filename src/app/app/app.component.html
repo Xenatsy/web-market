@@ -1,0 +1,31 @@
+<div class="container">
+    <!-- Меню -->
+    <app-menu
+        [role]="role"
+        (change_role)="change_role($event)"
+        (change_template)="change_template($event)"
+    ></app-menu>
+    <!-- Основной контент -->
+    @switch (template) {
+        @case ("reg") {
+            <app-registration
+                (reg)="change_role($event)"
+                (change_template)="change_template($event)"
+            ></app-registration>
+        }
+        @case ("auth") {
+            <app-authorization
+                (change_template)="change_template($event)"
+            ></app-authorization>
+        }
+        @case ("cart") {
+            <app-cart> Корзина </app-cart>
+        }
+        @case ("shelf") {
+            <app-shelf> Полка </app-shelf>
+        }
+        @case ("good_redactor") {
+            <app-good-redactor> Редактор товаров </app-good-redactor>
+        }
+    }
+</div>

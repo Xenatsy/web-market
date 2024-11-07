@@ -1,0 +1,11 @@
+#form{
+    text-align: center;
+    width: 100%;
+}
+.form-element{
+    margin: 10px;
+    width: 50%;
+    height: 100px;
+    text-align: center;
+}
+

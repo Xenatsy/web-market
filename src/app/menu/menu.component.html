@@ -1,0 +1,17 @@
+
+<nav class="nav">
+    @switch (role) {
+        @case ("Guest"){
+            <button id="reg-auth" (click)="go('reg')" class="nav-button">Регистрация</button>
+        }
+        @case ("User") {
+            <button (click)="go('shelf')" class="nav-button">Полка</button>
+            <button (click)="go('cart')" class="nav-button">Корзина</button>
+            <button (click)="out()" class="nav-button">Выход</button>
+        }
+        @case ("Admin") {
+            <button (click)="go('good_redactor')" class="nav-button">Редактор товаров</button>
+            <button (click)="out()" class="nav-button">Выход</button>
+        }
+    }
+</nav>

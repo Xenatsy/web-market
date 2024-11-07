@@ -1,0 +1,11 @@
+
+<div id="form">
+<input class="form-element" placeholder="Введите логин" type="login">
+<input class="form-element" placeholder="Введите пароль" type="password">
+<input class="form-element" placeholder="Повторите пароль" type="password">
+<select class="form-element" title="role" #role>
+    <option value="User"> Покупатель </option>
+    <option value="Admin"> Администратор </option>
+</select>
+<button class="form-element" (click)="registration(role.value)">Зарегистрироваться</button>
+</div>
