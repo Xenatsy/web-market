@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
 import { RegistrationComponent } from '../registration/registration.component';
 import { CartComponent } from "../cart/cart.component";
 import { GoodRedactorComponent } from '../good_redactor/good-redactor.component';
 import { ShelfComponent } from '../shelf/shelf.component';
 import { AuthorizationComponent } from "../authorization/authorization.component";
-
+import { LocalStorageService } from "./session.service"
 @Component({
   standalone: true,
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
+  providers: [
+    LocalStorageService
+  ],
   imports: [
     MenuComponent,
     RegistrationComponent,
@@ -39,15 +42,26 @@ export class AppComponent {
         Шаблоны-страницы:
             -  Reg-auth
     */
-    role: string = "Guest";
-    template: string = "auth";
 
-    change_role(new_role: string){
-        this.role = new_role;
-        sessionStorage.setItem("role", new_role);
+    role:string = "";
+    template:string = ""
+    
+    constructor(private storageService: LocalStorageService) {}
+
+    ngOnInit(){
+      this.role = this.storageService.has("role") ? this.storageService.get("role")! : "Guest";
+      this.template = this.storageService.has("template") ? this.storageService.get("template")! : "auth";
     }
-    change_template(new_template: string){
+
+    changeRole(new_role: string){
+        this.role = new_role;
+        this.storageService.set("role", new_role);
+    }
+
+    changeTemplate(new_template: string){
         this.template = new_template;
+        this.storageService.set("template", new_template);
+
     }
 
 }

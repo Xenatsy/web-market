@@ -11,8 +11,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class AuthorizationComponent {
     @Output() change_template = new EventEmitter<string>();
+
     login: string = "";
     password: string = "";
+
     authorization(){
         // Поиск логина и пароля с базы данных
 

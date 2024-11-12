@@ -13,7 +13,7 @@ export class MenuComponent {
     @Output() change_role = new EventEmitter<string>();
 
     go(place: string) {
-        const regauth = document.getElementById("reg-auth") as HTMLElement|null;
+        const regauth = document.getElementById("reg-auth") as HTMLElement | null;
         switch (regauth?.innerText) {
             case "Авторизация": {
                 regauth.innerText = "Регистрация";
@@ -29,9 +29,9 @@ export class MenuComponent {
                 this.change_template.emit(place);
         }
     }
+
     out(){
         this.go("auth");
-        sessionStorage.clear();
         this.change_role.emit("Guest");
     }
 

@@ -2,20 +2,20 @@
     <!-- Меню -->
     <app-menu
         [role]="role"
-        (change_role)="change_role($event)"
-        (change_template)="change_template($event)"
+        (change_role)="changeRole($event)"
+        (change_template)="changeTemplate($event)"
     ></app-menu>
     <!-- Основной контент -->
     @switch (template) {
         @case ("reg") {
             <app-registration
-                (reg)="change_role($event)"
-                (change_template)="change_template($event)"
+                (reg)="changeRole($event)"
+                (change_template)="changeTemplate($event)"
             ></app-registration>
         }
         @case ("auth") {
             <app-authorization
-                (change_template)="change_template($event)"
+                (change_template)="changeTemplate($event)"
             ></app-authorization>
         }
         @case ("cart") {
